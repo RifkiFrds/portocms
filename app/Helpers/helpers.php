@@ -40,7 +40,7 @@ if (!function_exists('env')) {
 if (!function_exists('view')) {
     function view($viewName, $data = []) {
         extract($data);
-        $viewPath = __DIR__ . '/../views/' . $viewName . '.php';
+        $viewPath = __DIR__ . '/../Views/' . $viewName . '.php';
         if (file_exists($viewPath)) {
             require $viewPath;
         } else {
