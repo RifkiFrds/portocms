@@ -1,8 +1,8 @@
 <?php
 
 // Require helpers first (defines env() etc.)
-require_once __DIR__ . '/helpers/helpers.php';
-require_once __DIR__ . '/helpers/upload.php';
+require_once __DIR__ . '/Helpers/helpers.php';
+require_once __DIR__ . '/Helpers/upload.php';
 
 // Load environmental variables
 loadEnv(__DIR__ . '/../.env');
