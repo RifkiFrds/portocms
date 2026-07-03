@@ -24,7 +24,7 @@ require_once __DIR__ . '/layouts/header.php';
                             </div>
                         <?php endif; ?>
                         
-                        <form action="/login" method="POST">
+                        <form action="<?= base_url('login') ?>" method="POST">
                             <div class="mb-3">
                                 <label for="username" class="form-label fw-medium text-secondary">Username</label>
                                 <div class="input-group">
@@ -47,7 +47,7 @@ require_once __DIR__ . '/layouts/header.php';
                         </form>
                         
                         <div class="text-center mt-4">
-                            <a href="/" class="text-decoration-none small text-muted"><i class="bi bi-arrow-left"></i> Back to Portfolio</a>
+                            <a href="<?= base_url('') ?>" class="text-decoration-none small text-muted"><i class="bi bi-arrow-left"></i> Back to Portfolio</a>
                         </div>
                     </div>
                 </div>

@@ -12,7 +12,7 @@ require_once __DIR__ . '/../layouts/header.php';
                     <h1 class="fw-bold mb-1">Manage Profile</h1>
                     <p class="text-muted">Update your general details, bio, avatar, and resume.</p>
                 </div>
-                <a href="/admin" class="btn btn-outline-secondary rounded-pill btn-sm px-3">
+                <a href="<?= admin_url('') ?>" class="btn btn-outline-secondary rounded-pill btn-sm px-3">
                     <i class="bi bi-arrow-left"></i> Back to Dashboard
                 </a>
             </div>
@@ -26,7 +26,7 @@ require_once __DIR__ . '/../layouts/header.php';
                     </div>
                 <?php endif; ?>
 
-                <form action="/admin/profile" method="POST" enctype="multipart/form-data">
+                <form action="<?= admin_url('profile') ?>" method="POST" enctype="multipart/form-data">
                     <div class="row g-4">
                         <!-- Left Column: Details -->
                         <div class="col-md-8">

@@ -21,7 +21,7 @@ require_once __DIR__ . '/layouts/header.php';
                         Get In Touch <i class="bi bi-arrow-right ms-2"></i>
                     </a>
                     <?php if (!empty($profile['cv_path'])): ?>
-                        <a href="<?= '/uploads/' . sanitize($profile['cv_path']) ?>" class="btn btn-outline-secondary btn-lg rounded-pill px-4 py-2" download>
+                        <a href="<?= base_url('uploads/' . sanitize($profile['cv_path'])) ?>" class="btn btn-outline-secondary btn-lg rounded-pill px-4 py-2" download>
                             Download CV <i class="bi bi-download ms-2"></i>
                         </a>
                     <?php endif; ?>
@@ -30,7 +30,7 @@ require_once __DIR__ . '/layouts/header.php';
             <div class="col-lg-5 order-1 order-lg-2 text-center mb-5 mb-lg-0">
                 <div class="hero-img-wrapper">
                     <?php if (!empty($profile['photo'])): ?>
-                        <img src="<?= '/uploads/' . sanitize($profile['photo']) ?>" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&h=400&q=80'" alt="<?= sanitize($profile['name'] ?? 'Avatar') ?>" class="img-fluid rounded-circle profile-img shadow-lg">
+                        <img src="<?= base_url('uploads/' . sanitize($profile['photo'])) ?>" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&h=400&q=80'" alt="<?= sanitize($profile['name'] ?? 'Avatar') ?>" class="img-fluid rounded-circle profile-img shadow-lg">
                     <?php else: ?>
                         <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&h=400&q=80" alt="Avatar" class="img-fluid rounded-circle profile-img shadow-lg">
                     <?php endif; ?>
@@ -237,7 +237,7 @@ require_once __DIR__ . '/layouts/header.php';
                         <div class="card border-0 shadow-sm rounded-4 overflow-hidden project-card bg-white h-100">
                             <div class="project-img-wrapper position-relative">
                                 <?php if (!empty($proj['image'])): ?>
-                                    <img src="<?= '/uploads/' . sanitize($proj['image']) ?>" onerror="this.src='https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&h=350&q=80'" class="card-img-top project-img" alt="<?= sanitize($proj['title']) ?>">
+                                    <img src="<?= base_url('uploads/' . sanitize($proj['image'])) ?>" onerror="this.src='https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&h=350&q=80'" class="card-img-top project-img" alt="<?= sanitize($proj['title']) ?>">
                                 <?php else: ?>
                                     <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&h=350&q=80" class="card-img-top project-img" alt="Project image">
                                 <?php endif; ?>

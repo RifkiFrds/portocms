@@ -1,6 +1,6 @@
 <?php 
 $isEdit = isset($certificate['id']);
-$actionUrl = $isEdit ? '/admin/certificates/update' : '/admin/certificates/store';
+$actionUrl = $isEdit ? admin_url('certificates/update') : admin_url('certificates/store');
 require_once __DIR__ . '/../../layouts/header.php'; 
 ?>
 
@@ -13,7 +13,7 @@ require_once __DIR__ . '/../../layouts/header.php';
                     <h1 class="fw-bold mb-1"><?= sanitize($title) ?></h1>
                     <p class="text-muted">Enter details for your certification / license.</p>
                 </div>
-                <a href="/admin/certificates" class="btn btn-outline-secondary rounded-pill btn-sm px-3">
+                <a href="<?= admin_url('certificates') ?>" class="btn btn-outline-secondary rounded-pill btn-sm px-3">
                     <i class="bi bi-arrow-left"></i> Back to List
                 </a>
             </div>

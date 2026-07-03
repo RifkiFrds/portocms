@@ -21,7 +21,7 @@ class AdminController extends Controller {
 
     private function checkAuth(): void {
         if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-            redirect('/login');
+            redirect('login', false);
         }
     }
 
@@ -82,7 +82,7 @@ class AdminController extends Controller {
             $profileModel->create($data);
         }
 
-        redirect('/admin/profile');
+        redirect('profile', true);
     }
 
     // ==========================================
@@ -115,7 +115,7 @@ class AdminController extends Controller {
 
         $expModel = new Experience();
         $expModel->create($data);
-        redirect('/admin/experiences');
+        redirect('experiences', true);
     }
 
     public function experienceEdit(): void {
@@ -124,7 +124,7 @@ class AdminController extends Controller {
         $experience = $expModel->find($id);
 
         if (!$experience) {
-            redirect('/admin/experiences');
+            redirect('experiences', true);
         }
 
         view('admin/experiences/form', ['title' => 'Edit Experience', 'experience' => $experience]);
@@ -149,14 +149,14 @@ class AdminController extends Controller {
 
         $expModel = new Experience();
         $expModel->update($id, $data);
-        redirect('/admin/experiences');
+        redirect('experiences', true);
     }
 
     public function experienceDelete(): void {
         $id = (int)($_POST['id'] ?? 0);
         $expModel = new Experience();
         $expModel->delete($id);
-        redirect('/admin/experiences');
+        redirect('experiences', true);
     }
 
     // ==========================================
@@ -190,7 +190,7 @@ class AdminController extends Controller {
 
         $eduModel = new Education();
         $eduModel->create($data);
-        redirect('/admin/educations');
+        redirect('educations', true);
     }
 
     public function educationEdit(): void {
@@ -199,7 +199,7 @@ class AdminController extends Controller {
         $education = $eduModel->find($id);
 
         if (!$education) {
-            redirect('/admin/educations');
+            redirect('educations', true);
         }
 
         view('admin/educations/form', ['title' => 'Edit Education', 'education' => $education]);
@@ -225,14 +225,14 @@ class AdminController extends Controller {
 
         $eduModel = new Education();
         $eduModel->update($id, $data);
-        redirect('/admin/educations');
+        redirect('educations', true);
     }
 
     public function educationDelete(): void {
         $id = (int)($_POST['id'] ?? 0);
         $eduModel = new Education();
         $eduModel->delete($id);
-        redirect('/admin/educations');
+        redirect('educations', true);
     }
 
     // ==========================================
@@ -262,7 +262,7 @@ class AdminController extends Controller {
 
         $skillModel = new Skill();
         $skillModel->create($data);
-        redirect('/admin/skills');
+        redirect('skills', true);
     }
 
     public function skillEdit(): void {
@@ -271,7 +271,7 @@ class AdminController extends Controller {
         $skill = $skillModel->find($id);
 
         if (!$skill) {
-            redirect('/admin/skills');
+            redirect('skills', true);
         }
 
         view('admin/skills/form', ['title' => 'Edit Skill', 'skill' => $skill]);
@@ -293,14 +293,14 @@ class AdminController extends Controller {
 
         $skillModel = new Skill();
         $skillModel->update($id, $data);
-        redirect('/admin/skills');
+        redirect('skills', true);
     }
 
     public function skillDelete(): void {
         $id = (int)($_POST['id'] ?? 0);
         $skillModel = new Skill();
         $skillModel->delete($id);
-        redirect('/admin/skills');
+        redirect('skills', true);
     }
 
     // ==========================================
@@ -339,7 +339,7 @@ class AdminController extends Controller {
 
         $projectModel = new Project();
         $projectModel->create($data);
-        redirect('/admin/projects');
+        redirect('projects', true);
     }
 
     public function projectEdit(): void {
@@ -348,7 +348,7 @@ class AdminController extends Controller {
         $project = $projectModel->find($id);
 
         if (!$project) {
-            redirect('/admin/projects');
+            redirect('projects', true);
         }
 
         view('admin/projects/form', ['title' => 'Edit Project', 'project' => $project]);
@@ -381,14 +381,14 @@ class AdminController extends Controller {
         }
 
         $projectModel->update($id, $data);
-        redirect('/admin/projects');
+        redirect('projects', true);
     }
 
     public function projectDelete(): void {
         $id = (int)($_POST['id'] ?? 0);
         $projectModel = new Project();
         $projectModel->delete($id);
-        redirect('/admin/projects');
+        redirect('projects', true);
     }
 
     // ==========================================
@@ -420,7 +420,7 @@ class AdminController extends Controller {
 
         $certModel = new Certificate();
         $certModel->create($data);
-        redirect('/admin/certificates');
+        redirect('certificates', true);
     }
 
     public function certificateEdit(): void {
@@ -429,7 +429,7 @@ class AdminController extends Controller {
         $certificate = $certModel->find($id);
 
         if (!$certificate) {
-            redirect('/admin/certificates');
+            redirect('certificates', true);
         }
 
         view('admin/certificates/form', ['title' => 'Edit Certificate', 'certificate' => $certificate]);
@@ -453,13 +453,13 @@ class AdminController extends Controller {
 
         $certModel = new Certificate();
         $certModel->update($id, $data);
-        redirect('/admin/certificates');
+        redirect('certificates', true);
     }
 
     public function certificateDelete(): void {
         $id = (int)($_POST['id'] ?? 0);
         $certModel = new Certificate();
         $certModel->delete($id);
-        redirect('/admin/certificates');
+        redirect('certificates', true);
     }
 }

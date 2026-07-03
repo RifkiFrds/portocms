@@ -31,16 +31,16 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto align-items-center">
-                <?php if (strpos($_SERVER['REQUEST_URI'], '/admin') === 0): ?>
-                    <li class="nav-item"><a class="nav-link" href="/admin"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/admin/profile"><i class="bi bi-person-bounding-box"></i> Profile</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/admin/experiences"><i class="bi bi-briefcase"></i> Experiences</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/admin/educations"><i class="bi bi-mortarboard"></i> Educations</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/admin/skills"><i class="bi bi-journal-code"></i> Skills</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/admin/projects"><i class="bi bi-kanban"></i> Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/admin/certificates"><i class="bi bi-patch-check"></i> Certificates</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/" target="_blank"><i class="bi bi-globe"></i> View Site</a></li>
-                    <li class="nav-item ms-lg-3"><a class="btn btn-outline-danger btn-sm" href="/logout"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+                <?php if (strpos($_SERVER['HTTP_HOST'] ?? '', 'admin.') === 0): ?>
+                    <li class="nav-item"><a class="nav-link" href="<?= admin_url('') ?>"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= admin_url('profile') ?>"><i class="bi bi-person-bounding-box"></i> Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= admin_url('experiences') ?>"><i class="bi bi-briefcase"></i> Experiences</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= admin_url('educations') ?>"><i class="bi bi-mortarboard"></i> Educations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= admin_url('skills') ?>"><i class="bi bi-journal-code"></i> Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= admin_url('projects') ?>"><i class="bi bi-kanban"></i> Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= admin_url('certificates') ?>"><i class="bi bi-patch-check"></i> Certificates</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= base_url('') ?>" target="_blank"><i class="bi bi-globe"></i> View Site</a></li>
+                    <li class="nav-item ms-lg-3"><a class="btn btn-outline-danger btn-sm" href="<?= admin_url('logout') ?>"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
                 <?php else: ?>
                     <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
@@ -51,9 +51,9 @@
                     <li class="nav-item"><a class="nav-link" href="#certificates">Certificates</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                     <?php if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true): ?>
-                        <li class="nav-item ms-lg-3"><a class="btn btn-primary btn-sm rounded-pill px-3" href="/admin"><i class="bi bi-speedometer2"></i> CMS Dashboard</a></li>
+                        <li class="nav-item ms-lg-3"><a class="btn btn-primary btn-sm rounded-pill px-3" href="<?= admin_url('') ?>"><i class="bi bi-speedometer2"></i> CMS Dashboard</a></li>
                     <?php else: ?>
-                        <li class="nav-item ms-lg-3"><a class="btn btn-outline-primary btn-sm rounded-pill px-3" href="/login"><i class="bi bi-person-lock"></i> Login</a></li>
+                        <li class="nav-item ms-lg-3"><a class="btn btn-outline-primary btn-sm rounded-pill px-3" href="<?= base_url('login') ?>"><i class="bi bi-person-lock"></i> Login</a></li>
                     <?php endif; ?>
                 <?php endif; ?>
             </ul>

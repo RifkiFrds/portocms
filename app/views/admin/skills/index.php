@@ -13,7 +13,7 @@ require_once __DIR__ . '/../../layouts/header.php';
                     <p class="text-muted">Manage your technical strengths and categories.</p>
                 </div>
                 <div>
-                    <a href="/admin/skills/create" class="btn btn-primary rounded-pill px-4 btn-sm shadow-sm">
+                    <a href="<?= admin_url('skills/create') ?>" class="btn btn-primary rounded-pill px-4 btn-sm shadow-sm">
                         <i class="bi bi-plus-circle me-1"></i> Add Skill
                     </a>
                 </div>
@@ -56,10 +56,10 @@ require_once __DIR__ . '/../../layouts/header.php';
                                         </td>
                                         <td class="text-end">
                                             <div class="d-inline-flex gap-2">
-                                                <a href="/admin/skills/edit?id=<?= (int)$skill['id'] ?>" class="btn btn-sm btn-outline-secondary rounded-pill px-3">
+                                                <a href="<?= admin_url('skills/edit?id=' . (int)$skill['id']) ?>" class="btn btn-sm btn-outline-secondary rounded-pill px-3">
                                                     <i class="bi bi-pencil"></i> Edit
                                                 </a>
-                                                <form action="/admin/skills/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this skill?');">
+                                                <form action="<?= admin_url('skills/delete') ?>" method="POST" onsubmit="return confirm('Are you sure you want to delete this skill?');">
                                                     <input type="hidden" name="id" value="<?= (int)$skill['id'] ?>">
                                                     <button type="submit" class="btn btn-sm btn-outline-danger rounded-pill px-3">
                                                         <i class="bi bi-trash"></i> Delete

@@ -11,7 +11,7 @@ require_once __DIR__ . '/../layouts/header.php';
             <p class="text-muted">Manage your portfolio website content from this dashboard.</p>
         </div>
         <div class="col-md-4 text-md-end">
-            <a href="/" target="_blank" class="btn btn-outline-primary rounded-pill px-4">
+            <a href="<?= base_url('') ?>" target="_blank" class="btn btn-outline-primary rounded-pill px-4">
                 <i class="bi bi-eye me-1"></i> Live Portfolio
             </a>
         </div>
@@ -60,62 +60,74 @@ require_once __DIR__ . '/../layouts/header.php';
     <!-- Management Modules Outline -->
     <div class="card border-0 shadow-sm rounded-4 bg-white p-4 p-lg-5">
         <h4 class="fw-bold mb-4"><i class="bi bi-sliders text-primary me-2"></i>Portfolio CMS Content Manager</h4>
-        <p class="text-secondary mb-4">Click below to manage each section of your personal portfolio website. (Note: CRUD functionality will be implemented in subsequent phases).</p>
+        <p class="text-secondary mb-4">Click below to manage each section of your personal portfolio website.</p>
         
         <div class="row g-3">
             <div class="col-md-6">
-                <div class="d-flex align-items-center p-3 border rounded-3 hover-shadow-sm transition-all bg-light-soft">
-                    <i class="bi bi-person-bounding-box text-primary fs-3 me-3"></i>
-                    <div>
-                        <h6 class="fw-bold mb-1">Manage Profile</h6>
-                        <span class="text-muted small">Update bio, avatar, contact details, and CV.</span>
+                <a href="<?= admin_url('profile') ?>" class="text-decoration-none text-dark">
+                    <div class="d-flex align-items-center p-3 border rounded-3 hover-shadow-sm transition-all bg-light-soft">
+                        <i class="bi bi-person-bounding-box text-primary fs-3 me-3"></i>
+                        <div>
+                            <h6 class="fw-bold mb-1">Manage Profile</h6>
+                            <span class="text-muted small">Update bio, avatar, contact details, and CV.</span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-md-6">
-                <div class="d-flex align-items-center p-3 border rounded-3 hover-shadow-sm transition-all bg-light-soft">
-                    <i class="bi bi-briefcase-fill text-primary fs-3 me-3"></i>
-                    <div>
-                        <h6 class="fw-bold mb-1">Manage Experience</h6>
-                        <span class="text-muted small">Add, update, or delete work experience timeline.</span>
+                <a href="<?= admin_url('experiences') ?>" class="text-decoration-none text-dark">
+                    <div class="d-flex align-items-center p-3 border rounded-3 hover-shadow-sm transition-all bg-light-soft">
+                        <i class="bi bi-briefcase-fill text-primary fs-3 me-3"></i>
+                        <div>
+                            <h6 class="fw-bold mb-1">Manage Experience</h6>
+                            <span class="text-muted small">Add, update, or delete work experience timeline.</span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-md-6">
-                <div class="d-flex align-items-center p-3 border rounded-3 hover-shadow-sm transition-all bg-light-soft">
-                    <i class="bi bi-mortarboard-fill text-primary fs-3 me-3"></i>
-                    <div>
-                        <h6 class="fw-bold mb-1">Manage Education</h6>
-                        <span class="text-muted small">Update institutions, degrees, and GPA info.</span>
+                <a href="<?= admin_url('educations') ?>" class="text-decoration-none text-dark">
+                    <div class="d-flex align-items-center p-3 border rounded-3 hover-shadow-sm transition-all bg-light-soft">
+                        <i class="bi bi-mortarboard-fill text-primary fs-3 me-3"></i>
+                        <div>
+                            <h6 class="fw-bold mb-1">Manage Education</h6>
+                            <span class="text-muted small">Update institutions, degrees, and GPA info.</span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-md-6">
-                <div class="d-flex align-items-center p-3 border rounded-3 hover-shadow-sm transition-all bg-light-soft">
-                    <i class="bi bi-journal-code text-primary fs-3 me-3"></i>
-                    <div>
-                        <h6 class="fw-bold mb-1">Manage Skills</h6>
-                        <span class="text-muted small">Group skills by categories and set proficiency.</span>
+                <a href="<?= admin_url('skills') ?>" class="text-decoration-none text-dark">
+                    <div class="d-flex align-items-center p-3 border rounded-3 hover-shadow-sm transition-all bg-light-soft">
+                        <i class="bi bi-journal-code text-primary fs-3 me-3"></i>
+                        <div>
+                            <h6 class="fw-bold mb-1">Manage Skills</h6>
+                            <span class="text-muted small">Group skills by categories and set proficiency.</span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-md-6">
-                <div class="d-flex align-items-center p-3 border rounded-3 hover-shadow-sm transition-all bg-light-soft">
-                    <i class="bi bi-kanban-fill text-primary fs-3 me-3"></i>
-                    <div>
-                        <h6 class="fw-bold mb-1">Manage Projects</h6>
-                        <span class="text-muted small">Update live project showcases and repo links.</span>
+                <a href="<?= admin_url('projects') ?>" class="text-decoration-none text-dark">
+                    <div class="d-flex align-items-center p-3 border rounded-3 hover-shadow-sm transition-all bg-light-soft">
+                        <i class="bi bi-kanban-fill text-primary fs-3 me-3"></i>
+                        <div>
+                            <h6 class="fw-bold mb-1">Manage Projects</h6>
+                            <span class="text-muted small">Update live project showcases and repo links.</span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-md-6">
-                <div class="d-flex align-items-center p-3 border rounded-3 hover-shadow-sm transition-all bg-light-soft">
-                    <i class="bi bi-patch-check-fill text-primary fs-3 me-3"></i>
-                    <div>
-                        <h6 class="fw-bold mb-1">Manage Certificates</h6>
-                        <span class="text-muted small">Manage credentials, issuing institutions, and verification URLs.</span>
+                <a href="<?= admin_url('certificates') ?>" class="text-decoration-none text-dark">
+                    <div class="d-flex align-items-center p-3 border rounded-3 hover-shadow-sm transition-all bg-light-soft">
+                        <i class="bi bi-patch-check-fill text-primary fs-3 me-3"></i>
+                        <div>
+                            <h6 class="fw-bold mb-1">Manage Certificates</h6>
+                            <span class="text-muted small">Manage credentials, issuing institutions, and verification URLs.</span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>

@@ -8,14 +8,14 @@ use App\Models\Admin;
 class AuthController extends Controller {
     public function loginForm(): void {
         if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
-            redirect('/admin');
+            redirect('/', true);
         }
         view('login');
     }
 
     public function login(): void {
         if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
-            redirect('/admin');
+            redirect('/', true);
         }
 
         $username = trim($_POST['username'] ?? '');
@@ -33,7 +33,7 @@ class AuthController extends Controller {
             $_SESSION['admin_logged_in'] = true;
             $_SESSION['admin_id'] = $admin['id'];
             $_SESSION['admin_username'] = $admin['username'];
-            redirect('/admin');
+            redirect('/', true);
         } else {
             view('login', ['error' => 'Invalid username or password.', 'username' => $username]);
         }
@@ -49,6 +49,6 @@ class AuthController extends Controller {
             );
         }
         session_destroy();
-        redirect('/login');
+        redirect('login', false);
     }
 }

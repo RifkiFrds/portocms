@@ -1,6 +1,6 @@
 <?php 
 $isEdit = isset($education['id']);
-$actionUrl = $isEdit ? '/admin/educations/update' : '/admin/educations/store';
+$actionUrl = $isEdit ? admin_url('educations/update') : admin_url('educations/store');
 require_once __DIR__ . '/../../layouts/header.php'; 
 ?>
 
@@ -13,7 +13,7 @@ require_once __DIR__ . '/../../layouts/header.php';
                     <h1 class="fw-bold mb-1"><?= sanitize($title) ?></h1>
                     <p class="text-muted">Enter details for your academic history.</p>
                 </div>
-                <a href="/admin/educations" class="btn btn-outline-secondary rounded-pill btn-sm px-3">
+                <a href="<?= admin_url('educations') ?>" class="btn btn-outline-secondary rounded-pill btn-sm px-3">
                     <i class="bi bi-arrow-left"></i> Back to List
                 </a>
             </div>
