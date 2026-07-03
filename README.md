@@ -1,101 +1,76 @@
-# Portfolio CMS (PHP Native MVC)
+# Portfolio CMS - Docker Deployment Guide
 
-Aplikasi website portfolio pribadi yang ringan, premium, dan bersih, terintegrasi dengan Dashboard Administrasi kustom (CMS). Dibangun sepenuhnya dari nol menggunakan PHP Native, MySQL (PDO), Bootstrap 5, dan Vanilla JavaScript.
-
-## Fitur
-
-### 💻 Public Portfolio Website
-- **Hero Banner:** Judul dinamis, peran profesional, narasi bio, tombol aksi (CTA), dan pengunduh CV/resume.
-- **About Me:** Penjelasan profesional, informasi kontak, dan foto profil/avatar.
-- **Work Experiences:** Linimasa kronologis yang menampilkan peran kerja, detail perusahaan, periode kerja, dan deskripsi tanggung jawab.
-- **Education Timeline:** Menampilkan gelar akademik, jurusan, nama institusi, IPK/GPA, dan periode studi.
-- **Skills Directory:** Bar persentase kemahiran yang dikelompokkan berdasarkan kategori (Frontend, Backend, DevOps, dll).
-- **Projects Showcase:** Kartu modern yang menampilkan gambar preview, deskripsi proyek, tautan demo langsung, dan repositori GitHub.
-- **Licenses & Certificates:** Lencana lisensi profesional yang terhubung dengan tautan verifikasi kredensial.
-- **Contact:** Saluran kontak yang aman dan tautan media sosial (GitHub, LinkedIn).
-
-### 🛠️ Admin Dashboard CMS
-- **Autentikasi Aman:** Proteksi halaman admin dari akses tidak sah menggunakan Session Guard.
-- **Kelola Profil:** Perbarui biografi, data diri, unggah foto profil baru, dan unggah berkas resume (PDF).
-- **CRUD Pengalaman:** Formulir lengkap untuk menambah, mengubah, dan menghapus riwayat pengalaman kerja.
-- **CRUD Pendidikan:** Formulir lengkap untuk menambah, mengubah, dan menghapus riwayat akademik.
-- **CRUD Skill:** Penggeser (*slider*) tingkat kemahiran dan pengelompokan kategori keahlian.
-- **CRUD Project:** Unggah gambar proyek, tulis deskripsi, dan simpan tautan demo serta repositori kode.
-- **CRUD Sertifikat:** Kelola sertifikasi profesional beserta ID kredensial dan URL verifikasinya.
+Website Portfolio CMS berbasis **PHP Native 8+** dengan Apache, MySQL 8, dan PDO. Repositori ini telah dikonfigurasi untuk siap dideploy menggunakan Docker pada environment production (misalnya di Ubuntu 24.04 menggunakan Nginx Proxy Manager).
 
 ---
 
-## Tech Stack
-- **Backend:** PHP 8+ (Native, OOP, MVC Architecture)
-- **Database:** MySQL via PDO (Prepared Statements untuk Keamanan SQL)
-- **Frontend Framework:** Bootstrap 5 (CDN) & Bootstrap Icons
-- **Typography:** Poppins (Google Fonts)
-- **Styling:** CSS Kustom (style.css) dengan estetika premium terinspirasi dari Vercel/Notion (efek bayangan halus, navbar glassmorphism, dan mikro-interaksi yang interaktif).
+## 1. Prasyarat (Prerequisites)
+- Docker dan Docker Compose telah terinstal di server/lokal.
+- Jaringan docker external bernama `proxy` sudah dibuat (untuk integrasi dengan Nginx Proxy Manager):
+  ```bash
+  docker network create proxy
+  ```
 
 ---
 
-## Struktur Direktori
-```text
-/public               # Root server web
-  /assets
-    /css/style.css    # Stylesheet kustom global
-    /js/app.js        # Logika scroll navigasi dan interaksi UI
-  /uploads            # Berkas unggahan (foto profil, CV, gambar proyek)
-  index.php           # Front Controller / App Bootstrapper
-/app                  # Logika Aplikasi
-  /core               # Kelas Inti (Router, Controller, Model, Database)
-  /controllers        # Pengendali Rute (HomeController, AuthController, AdminController)
-  /helpers            # Fungsi Utility (helpers.php, upload.php)
-  /models             # Skema Entitas Database (Profile, Experience, Education, dll)
-  /views              # Templat Tampilan/UI (layouts/, admin/, home.php, login.php)
-/config               # Konfigurasi aplikasi
-/database             # Mesin Migrasi dan Seeder
-  /migrations
-  /seeders
-  migrate.php
-  seed.php
-/routes
-  web.php             # Registrasi Rute Web
-.env                  # File konfigurasi env lokal
-```
+## 2. Langkah Instalasi & Penggunaan dengan Docker
 
----
-
-## Setup & Instalasi
-
-### 1. Konfigurasi Environment
-Buat atau ubah nama file `.env` di direktori utama (root) proyek Anda:
-```ini
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=portfolio_cms
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
-### 2. Jalankan Migrasi Database
-Untuk menginisialisasi skema tabel database secara bersih:
+### A. Duplikasi Pengaturan Environment
+Buat file `.env` di root folder dengan menduplikasi `.env.example`:
 ```bash
-php database/migrate.php
+cp .env.example .env
 ```
+Sesuaikan konfigurasi di dalam file `.env` jika diperlukan.
 
-### 3. Jalankan Seeder Database
-Mengisi database dengan data dummy awal serta akun admin default:
+### B. Menjalankan Container (Build & Run)
+Jalankan perintah berikut untuk mem-build dan menjalankan service aplikasi dan database di background:
 ```bash
-php database/seed.php
+docker compose up -d --build
 ```
 
-### 4. Jalankan Local PHP Server
-Mulai server PHP dengan mengarahkan root direktori ke folder `public`:
+### C. Menghentikan Container
+Untuk menghentikan dan menghapus container yang sedang berjalan (data database tetap aman di volume `mysql_data`):
 ```bash
-php -S localhost:8000 -t public
+docker compose down
 ```
 
-Buka alamat `http://localhost:8000` pada web browser Anda.
+### D. Melihat Logs
+Untuk memantau log dari container secara real-time:
+```bash
+docker compose logs -f
+```
+
+### E. Masuk ke dalam Container Aplikasi
+Jika ingin masuk ke terminal container aplikasi PHP:
+```bash
+docker exec -it portfolio-app bash
+```
 
 ---
 
-## Kredensial Login Admin
-Untuk mengakses halaman CMS Dashboard (`http://localhost:8000/login`):
-- **Username:** `admin`
-- **Password:** `admin123`
+## 3. Database Migrasi & Seed di dalam Docker
+
+Jalankan perintah ini dari host untuk melakukan migrasi dan pengisian data awal secara langsung pada container aplikasi:
+
+### Migrasi Database (Membuat Tabel)
+```bash
+docker exec -it portfolio-app php database/migrate.php
+```
+
+### Seed Database (Mengisi Data Awal Admin & Portfolio)
+```bash
+docker exec -it portfolio-app php database/seed.php
+```
+
+---
+
+## 4. Integrasi dengan Nginx Proxy Manager (NPM)
+
+Untuk mempublikasikan aplikasi menggunakan Nginx Proxy Manager:
+1. Hubungkan domain/subdomain Anda ke alamat IP Server.
+2. Pada Nginx Proxy Manager, tambahkan **Proxy Host** baru:
+   - **Domain Names**: `domainanda.com` (atau subdomain)
+   - **Scheme**: `http`
+   - **Forward HostName / IP**: `portfolio-app`
+   - **Forward Port**: `80`
+   - Aktifkan opsi **Block Common Exploits** dan konfigurasikan SSL jika diperlukan.
