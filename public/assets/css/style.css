@@ -1,0 +1,262 @@
+/* Global CSS variables for a premium, clean design system */
+:root {
+    --primary-color: #0070f3; /* Vercel blue */
+    --primary-hover: #0051b3;
+    --primary-soft: rgba(0, 112, 243, 0.08);
+    --secondary-soft: rgba(108, 117, 125, 0.08);
+    --success-soft: rgba(25, 135, 84, 0.08);
+    --info-soft: rgba(13, 202, 240, 0.08);
+    --warning-soft: rgba(255, 193, 7, 0.08);
+    --bg-light-soft: #fcfcfc;
+    --border-color: #eaeaea;
+    --text-primary: #111111;
+    --text-secondary: #666666;
+    --transition-speed: 0.3s;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-primary);
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* Typography & Layout defaults */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.text-secondary {
+    color: var(--text-secondary) !important;
+}
+
+.bg-primary-soft {
+    background-color: var(--primary-soft);
+}
+
+.bg-secondary-soft {
+    background-color: var(--secondary-soft);
+}
+
+.bg-success-soft {
+    background-color: var(--success-soft);
+}
+
+.bg-info-soft {
+    background-color: var(--info-soft);
+}
+
+.bg-warning-soft {
+    background-color: var(--warning-soft);
+}
+
+.bg-light-soft {
+    background-color: var(--bg-light-soft);
+}
+
+/* Glassmorphic Navbar */
+.main-navbar {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    transition: all var(--transition-speed) ease;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text-primary) !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+}
+
+.nav-link {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--text-secondary) !important;
+    transition: color var(--transition-speed) ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--primary-color) !important;
+}
+
+/* Wrapper & Sections */
+.wrapper {
+    margin-top: 80px; /* Accounts for fixed navbar */
+}
+
+.section-divider {
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 80vh;
+    padding: 100px 0;
+    background: radial-gradient(circle at 80% 20%, rgba(0, 112, 243, 0.03) 0%, transparent 40%);
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #00d2ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.hero-description {
+    font-size: 1.15rem;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+.hero-img-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-img {
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+    border: 5px solid #ffffff;
+    transition: transform var(--transition-speed) ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.02);
+}
+
+/* Section Headings */
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.7px;
+}
+
+.section-subtitle-line {
+    width: 60px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--primary-color);
+}
+
+/* Custom Cards */
+.card {
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    border: 1px solid var(--border-color);
+}
+
+.hover-shadow-sm:hover {
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,0.075) !important;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    border-left: 2px solid var(--border-color);
+}
+
+.timeline-item {
+    transition: all var(--transition-speed) ease;
+}
+
+.timeline-item:hover .timeline-marker {
+    transform: scale(1.4);
+    background-color: var(--primary-hover) !important;
+}
+
+/* Project Cards */
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.08) !important;
+}
+
+.project-img-wrapper {
+    height: 250px;
+    background-color: #f5f5f5;
+    overflow: hidden;
+}
+
+.project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-speed) ease;
+}
+
+.project-card:hover .project-img {
+    transform: scale(1.03);
+}
+
+/* Progress bar customizations */
+.progress-bar {
+    transition: width 1s ease-in-out;
+}
+
+/* Social link hover effects */
+.hover-social {
+    transition: transform var(--transition-speed) ease, color var(--transition-speed) ease;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.hover-social:hover {
+    background-color: var(--primary-soft);
+    color: var(--primary-color) !important;
+    transform: translateX(5px);
+}
+
+/* Footer */
+.footer {
+    border-top: 1px solid var(--border-color);
+    background-color: #fafafa;
+}
+
+/* Transitions helper */
+.transition-all {
+    transition: all var(--transition-speed) ease;
+}
+
+/* Responsive adjustments */
+@media (min-width: 992px) {
+    .border-end-lg {
+        border-right: 1px solid var(--border-color) !important;
+    }
+}
+@media (min-width: 768px) {
+    .border-end-md {
+        border-right: 1px solid var(--border-color) !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .profile-img {
+        width: 240px;
+        height: 240px;
+    }
+}
