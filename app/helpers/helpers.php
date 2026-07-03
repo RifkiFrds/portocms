@@ -49,7 +49,6 @@ if (!function_exists('view')) {
     }
 }
 
-
 if (!function_exists('base_url')) {
     function base_url($path = '') {
         $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || 
